@@ -1,0 +1,10 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/ryo/workspaces/of/line/bin",
+            "binaryPath": "/home/ryo/workspaces/of/line/bin/line",
+            "binaryArgs": []
+        }
+    ]
+}
