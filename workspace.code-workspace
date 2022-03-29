@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "convex_hull"
+		},
+		{
+			"path": "segment_intersect"
+		},
+		{
+			"path": "lib"
+		},
+		{
+			"path": "line"
+		}
+	],
+	"settings": {}
+}
