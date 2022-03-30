@@ -4,6 +4,7 @@
 
 #define EPS 0.00001
 
+using Vec2 = glm::vec2;
 using Point = glm::vec2;
 
 struct Segment {
@@ -46,4 +47,8 @@ Point cross_point(Segment s1, Segment s2) {
   auto d2 = glm::abs(glm::cross(base, s1.p2 - s2.p1));
   auto t = d1 / (d1 + d2);
   return s1.p1 + (s1.p2 - s1.p1) * t;
+}
+
+float angle(Vec2 a, Vec2 b) {
+  return glm::angle(glm::normalize(a), glm::normalize(b));
 }
