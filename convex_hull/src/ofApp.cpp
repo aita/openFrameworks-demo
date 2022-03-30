@@ -1,11 +1,45 @@
 #include "ofApp.h"
 #include "geometry.h"
+#include <algorithm>
+#include <vector>
 
 namespace {
 using namespace std;
 
-vector<ofPoint> drawPoints;
-vector<Segment> segments;
+const int POINT_SIZE = 4;
+
+vector<ofPoint> points;
+ofPolyline line;
+
+vector<ofPoint> convexHull(vector<ofPoint> points) {
+  vector<ofPoint> hull;
+  if (points.size() < 3) {
+    return hull;
+  }
+
+  // find the left most point
+  auto p0 = points[0];
+  for (auto p : points) {
+    if (p.x < p0.x) {
+      p0 = p;
+    }
+  }
+
+  auto pi = p0;
+  do {
+    hull.push_back(pi);
+
+    auto pj = points[0];
+    for (auto pk : points) {
+      if (pi == pj || ccw(pi, pk, pj) == COUNTER_CLOCKWISE) {
+        pj = pk;
+      }
+    }
+    pi = pj;
+  } while (pi != p0);
+  return hull;
+}
+
 } // namespace
 
 //--------------------------------------------------------------
@@ -16,21 +50,10 @@ void ofApp::update() {}
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-  ofSetColor(ofColor::white);
-  for (auto &p : drawPoints) {
-    ofDrawRectangle(ofPoint(p) - 2, 4, 4);
-  }
-  if (segments.size() >= 2 && intersect(segments[0], segments[1])) {
-    auto p = cross_point(segments[0], segments[1]);
-    ofDrawRectangle(ofPoint(p) - 2, 4, 4);
-
-    ofSetColor(255, 0, 0);
-  } else {
-    ofSetColor(0, 255, 0);
-  }
-
-  for (auto &seg : segments) {
-    ofDrawLine(seg.p1, seg.p2);
+  line.draw();
+  for (auto point : points) {
+    ofDrawRectangle(point.x - POINT_SIZE / 2, point.y - POINT_SIZE / 2,
+                    POINT_SIZE, POINT_SIZE);
   }
 }
 
@@ -41,11 +64,8 @@ void ofApp::keyPressed(int key) {}
 void ofApp::keyReleased(int key) {
   switch (key) {
   case 'r':
-    drawPoints.clear();
-    segments.clear();
-    break;
-
-  default:
+    points.clear();
+    line.clear();
     break;
   }
 }
@@ -58,14 +78,14 @@ void ofApp::mouseDragged(int x, int y, int button) {}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-  if (drawPoints.size() >= 4) {
-    drawPoints.clear();
-    segments.clear();
-  }
-  drawPoints.push_back(ofPoint(x, y));
-  if (drawPoints.size() % 2 == 0) {
-    segments.push_back(Segment{drawPoints[drawPoints.size() - 2],
-                               drawPoints[drawPoints.size() - 1]});
+  points.push_back(ofPoint(x, y));
+  auto hull = convexHull(points);
+  if (!hull.empty()) {
+    line.clear();
+    for (auto p : hull) {
+      line.addVertex(p);
+    }
+    line.close();
   }
 }
 
