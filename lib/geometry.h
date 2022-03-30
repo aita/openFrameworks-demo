@@ -41,8 +41,8 @@ bool intersect(Segment s1, Segment s2) {
 
 ofPoint cross_point(Segment s1, Segment s2) {
   auto base = s2.p2 - s2.p1;
-  auto d1 = std::fabs(cross(base, s1.p1 - s2.p1));
-  auto d2 = std::fabs(cross(base, s1.p2 - s2.p1));
+  auto d1 = std::abs(cross(base, s1.p1 - s2.p1));
+  auto d2 = std::abs(cross(base, s1.p2 - s2.p1));
   auto t = d1 / (d1 + d2);
   return s1.p1 + (s1.p2 - s1.p1) * t;
 }

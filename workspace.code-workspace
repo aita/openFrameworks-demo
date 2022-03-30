@@ -14,7 +14,17 @@
     },
     {
       "path": "random"
+    },
+    {
+      "path": "plane_sweep"
     }
   ],
-  "settings": {}
+  "settings": {
+    "files.associations": {
+      "*.ipp": "cpp",
+      "deque": "cpp",
+      "string": "cpp",
+      "vector": "cpp"
+    }
+  }
 }
