@@ -1,17 +1,20 @@
 {
-	"folders": [
-		{
-			"path": "convex_hull"
-		},
-		{
-			"path": "segment_intersect"
-		},
-		{
-			"path": "lib"
-		},
-		{
-			"path": "line"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "convex_hull"
+    },
+    {
+      "path": "segment_intersect"
+    },
+    {
+      "path": "lib"
+    },
+    {
+      "path": "line"
+    },
+    {
+      "path": "random"
+    }
+  ],
+  "settings": {}
 }
