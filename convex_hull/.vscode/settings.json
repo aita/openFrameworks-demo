@@ -1,14 +1,3 @@
 {
-    "makefile.launchConfigurations": [
-        {
-            "cwd": "/home/ryo/junks/hello-of/bin",
-            "binaryPath": "/home/ryo/junks/hello-of/bin/hello-of_debug",
-            "binaryArgs": []
-        },
-        {
-            "cwd": "/home/ryo/workspaces/of/convex_hull/bin",
-            "binaryPath": "/home/ryo/workspaces/of/convex_hull/bin/convex_hull_debug",
-            "binaryArgs": []
-        }
-    ]
+  "makefile.extensionOutputFolder": "./.vscode"
 }

@@ -1,22 +1,25 @@
 {
   "folders": [
     {
-      "path": "convex_hull"
+      "path": "RandomWalk"
     },
     {
-      "path": "segment_intersect"
+      "path": "ConvexHull"
     },
     {
       "path": "lib"
     },
     {
-      "path": "line"
+      "path": "Line"
     },
     {
-      "path": "random"
+      "path": "PlaneSweep"
     },
     {
-      "path": "plane_sweep"
+      "path": "Random"
+    },
+    {
+      "path": "SegmentIntersect"
     }
   ],
   "settings": {
@@ -25,6 +28,7 @@
       "deque": "cpp",
       "string": "cpp",
       "vector": "cpp"
-    }
+    },
+    "makefile.extensionOutputFolder": "./.vscode"
   }
 }
